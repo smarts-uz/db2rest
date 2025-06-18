@@ -218,6 +218,7 @@
                     <!-- This is the directory where your .jte files are located. -->
                     <sourceDirectory>${project.basedir}/src/main/resources/sql-templates</sourceDirectory>
                     <contentType>Plain</contentType>
+                    <targetDirectory/>
                 </configuration>
                 <executions>
                     <execution>
