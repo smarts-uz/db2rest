@@ -4,9 +4,10 @@ app:
 
   databases:
     - id: ${DB_ID:db}
-      url: jdbc:mariadb://localhost:3306/test_stress
-      username: root
-      password: dilbekk070
+      url: ${DB_URL:}
+      username: ${DB_USER:}
+      password: ${DB_PASSWORD:}
+      schemas: ${INCLUDED_SCHEMAS:}
       maxConnections: ${MAX_POOL_SIZE:5}
 
 server:
@@ -35,12 +36,13 @@ spring:
       max-file-size: 5MB
       max-request-size: 5MB
 cors:
-  enabled: true
+  enabled: ${CORS_ENABLED:true}
   mappings:
-    - mapping: "/**"
-      allowedOrigins: "http://localhost:3000,http://localhost:8080"
-      allowedHeaders: "*"
-      allowedMethods: "GET,POST,PUT,DELETE,OPTIONS"
+    - mapping: "${CORS_MAPPING_PATH:/api/**}"
+      allowedOrigins: "${CORS_ALLOWED_ORIGINS:http://localhost:3000}"
+      allowedHeaders: "${CORS_ALLOWED_HEADERS:*}"
+      allowedMethods: "${CORS_ALLOWED_METHODS:GET,POST,PUT,DELETE,OPTIONS}"
+
 
 
 
